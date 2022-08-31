@@ -6,7 +6,6 @@ function App() {
     <div className="App">
       <Global />
       <Routes />
-      <h1>oi</h1>
     </div>
   );
 }

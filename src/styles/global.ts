@@ -17,7 +17,7 @@ export default createGlobalStyle`
     }
 
     body, input, button, textarea {
-        //font-family: 'Inter', sans-serif;
+        font-family: 'Inter', sans-serif;
     }
 
     button {
