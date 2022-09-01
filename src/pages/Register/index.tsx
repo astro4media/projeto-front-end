@@ -3,8 +3,11 @@ import FormInput from "../../components/formInput";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useContext } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Register = () => {
+  const { setLoading } = useAuth();
   const schema = yup.object({
     nome: yup.string().required("O nome é obrigatório"),
     email: yup
@@ -30,10 +33,6 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-
-  function teste() {
-    console.log("oi");
-  }
 
   return (
     <motion.div
