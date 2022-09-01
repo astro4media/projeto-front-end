@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useContext } from "react";
 import { useAuth } from "../../contexts/AuthContext";
+import ContainerRegister from "./styles";
 
 const Register = () => {
   const { setLoading } = useAuth();
@@ -26,6 +27,7 @@ const Register = () => {
         "Adicione uma URL valido!"
       )
       .required("Adicione um URL"),
+    check: yup.boolean().oneOf([true], "Preencha o termo de uso"),
   });
 
   const {
@@ -35,71 +37,83 @@ const Register = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="">
-        <figure>
-          <img src="" alt="logo" />
-        </figure>
-        <form onSubmit={handleSubmit((FormData) => console.log())}>
-          <h1>Cadastrar</h1>
-          <FormInput
-            id="nome"
-            type="text"
-            label="Nome"
-            register={register}
-            errors={errors}
-            children
-          ></FormInput>
-          <FormInput
-            id="email"
-            type="text"
-            label="Email"
-            register={register}
-            errors={errors}
-            children
-          ></FormInput>
-          <FormInput
-            id="senha"
-            type="text"
-            label="Senha"
-            register={register}
-            errors={errors}
-            children
-          ></FormInput>
-          <FormInput
-            id="confirmarSenha"
-            type="text"
-            label="Confirmar Senha"
-            register={register}
-            errors={errors}
-            children
-          ></FormInput>
-          <FormInput
-            id="bio"
-            type="text"
-            label="Bio"
-            register={register}
-            errors={errors}
-            children
-          ></FormInput>
-          <FormInput
-            id="url"
-            type="url"
-            label="Avatar"
-            register={register}
-            errors={errors}
-            children
-          ></FormInput>
+    <ContainerRegister>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="">
+          <figure>
+            <img src="" alt="logo" />
+          </figure>
+          <form onSubmit={handleSubmit((FormData) => console.log())}>
+            <h1>Cadastrar</h1>
+            <FormInput
+              id="nome"
+              type="text"
+              label="Nome"
+              register={register}
+              errors={errors}
+              children
+            ></FormInput>
+            <FormInput
+              id="email"
+              type="text"
+              label="Email"
+              register={register}
+              errors={errors}
+              children
+            ></FormInput>
+            <FormInput
+              id="senha"
+              type="text"
+              label="Senha"
+              register={register}
+              errors={errors}
+              children
+            ></FormInput>
+            <FormInput
+              id="confirmarSenha"
+              type="text"
+              label="Confirmar Senha"
+              register={register}
+              errors={errors}
+              children
+            ></FormInput>
+            <FormInput
+              id="bio"
+              type="text"
+              label="Bio"
+              register={register}
+              errors={errors}
+              children
+            ></FormInput>
+            <FormInput
+              id="url"
+              type="url"
+              label="Avatar"
+              register={register}
+              errors={errors}
+              children
+            ></FormInput>
 
-          <button type="submit">Cadastrar</button>
-        </form>
-      </div>
-    </motion.div>
+            <FormInput
+              id="check"
+              type="checkbox"
+              label="Termos de uso"
+              register={register}
+              errors={errors}
+            >
+              <p>Concordo com os termos de uso</p>
+            </FormInput>
+
+            <button type="submit">Cadastrar</button>
+          </form>
+        </div>
+      </motion.div>
+    </ContainerRegister>
   );
 };
 
