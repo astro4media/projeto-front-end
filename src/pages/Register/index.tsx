@@ -1,8 +1,39 @@
 import { motion } from "framer-motion";
 import FormInput from "../../components/formInput";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const Register = () => {
+  const schema = yup.object({
+    nome: yup.string().required("O nome é obrigatório"),
+    email: yup
+      .string()
+      .email("Deve ser um email")
+      .required("O email é obrigatório"),
+    senha: yup.string().required("A senha é obrigatória").min(8),
+    confirmarSenha: yup
+      .string()
+      .oneOf([yup.ref("password")], "A confirmação deve ser igual a senha"),
+    bio: yup.string().required("A bio é obrigatória"),
+    avatar: yup
+      .string()
+      .matches(
+        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        "Adicione uma URL valido!"
+      )
+      .required("Adicione um URL"),
+  });
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  function teste() {
+    console.log("oi");
+  }
 
   return (
     <motion.div
@@ -15,16 +46,58 @@ const Register = () => {
         <figure>
           <img src="" alt="logo" />
         </figure>
-        <form action="">
-          <FormInput 
-          id='id'
-          type='text'
-          label='name'
-          register=  
-          errors={Error}
-          >
+        <form onSubmit={handleSubmit((FormData) => console.log())}>
+          <h1>Cadastrar</h1>
+          <FormInput
+            id="nome"
+            type="text"
+            label="Nome"
+            register={register}
+            errors={errors}
+            children
+          ></FormInput>
+          <FormInput
+            id="email"
+            type="text"
+            label="Email"
+            register={register}
+            errors={errors}
+            children
+          ></FormInput>
+          <FormInput
+            id="senha"
+            type="text"
+            label="Senha"
+            register={register}
+            errors={errors}
+            children
+          ></FormInput>
+          <FormInput
+            id="confirmarSenha"
+            type="text"
+            label="Confirmar Senha"
+            register={register}
+            errors={errors}
+            children
+          ></FormInput>
+          <FormInput
+            id="bio"
+            type="text"
+            label="Bio"
+            register={register}
+            errors={errors}
+            children
+          ></FormInput>
+          <FormInput
+            id="url"
+            type="url"
+            label="Avatar"
+            register={register}
+            errors={errors}
+            children
+          ></FormInput>
 
-          </FormInput>
+          <button type="submit">Cadastrar</button>
         </form>
       </div>
     </motion.div>
