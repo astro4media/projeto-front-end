@@ -48,8 +48,9 @@ const Register = () => {
           <figure>
             <img src="" alt="logo" />
           </figure>
+          
           <form onSubmit={handleSubmit((FormData) => console.log())}>
-            <h1>Cadastrar</h1>
+            <h1 className="title-register">Cadastrar</h1>
             <FormInput
               id="nome"
               type="text"
@@ -103,12 +104,13 @@ const Register = () => {
               <FormInput
                 id="check"
                 type="checkbox"
-                label="Termos de uso"
+                label=""
                 register={register}
                 errors={errors}
               >   
-              </FormInput>
               <p>Concordo com os termos de uso</p>
+              </FormInput>
+              
             </div>
 
             <button type="submit">Cadastrar</button>
