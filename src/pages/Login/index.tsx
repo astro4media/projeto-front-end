@@ -9,9 +9,9 @@ import { RiEyeCloseLine } from 'react-icons/ri'
 import { MdOutlineRemoveRedEye } from 'react-icons/md'
 import { userLogin } from "../../services/userLogin";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo.svg"
 import logoName from "../../assets/images/logoName.svg"
 import rocket from "../../assets/images/rocketLogo.svg"
+import { toast } from 'react-toastify'
 
 import LoginContainer from "./styles";
 
@@ -43,10 +43,27 @@ const Login = () => {
   const onSubmit = async (data:IUserLogin) => {
     await userLogin(data)
       .then(data => {
-        
+        toast.success('Login feito com sucesso!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+        navigate('/dashboard')
       })
       .catch(err => {
-
+        toast.error('Login ou senha incorreto', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
       })
   }
 
