@@ -7,6 +7,7 @@ import {
   Ref,
   UseFormRegister,
 } from "react-hook-form";
+import InputStyle from "./styles";
 
 interface IErrors {
   type: string;
@@ -38,7 +39,7 @@ const FormInput = ({
   children,
 }: IFormInputProps) => {
   return (
-    <div className="fieldContainer">
+    <InputStyle className="fieldContainer">
       <label className="fieldContainer__label" htmlFor={id}>
         {label}
       </label>
@@ -54,7 +55,7 @@ const FormInput = ({
       {errors[id] && (
         <span className="fieldContainer__error">{errors[id].message}</span>
       )}
-    </div>
+    </InputStyle>
   );
 };
 
