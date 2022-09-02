@@ -44,7 +44,7 @@ const Register = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="">
+        <div className="div-main">
           <figure>
             <img src="" alt="logo" />
           </figure>
@@ -99,15 +99,17 @@ const Register = () => {
               children
             ></FormInput>
 
-            <FormInput
-              id="check"
-              type="checkbox"
-              label="Termos de uso"
-              register={register}
-              errors={errors}
-            >
+            <div className="div-checkbox">
+              <FormInput
+                id="check"
+                type="checkbox"
+                label="Termos de uso"
+                register={register}
+                errors={errors}
+              >   
+              </FormInput>
               <p>Concordo com os termos de uso</p>
-            </FormInput>
+            </div>
 
             <button type="submit">Cadastrar</button>
           </form>
