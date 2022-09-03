@@ -1,10 +1,8 @@
-import { IUser, IUserLogin } from "../contexts/AuthContext";
-import api from "./api";
-
+import { IUser, IUserLogin } from "../../contexts/AuthContext";
+import api from ".";
 
 export async function userLogin(userData: IUserLogin): Promise<IUser> {
   const { data } = await api.post<IUser>("/login", userData);
-  
-  return data;
 
+  return data;
 }

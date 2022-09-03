@@ -27,7 +27,7 @@ interface IFormInputProps {
   label: string;
   register: UseFormRegister<any>;
   errors: TFieldErrors;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const FormInput = ({

@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { autoLogin } from "../services/autoLogin";
+import { autoLogin } from "../services/Astro4MediaAPI/autoLogin";
 
 interface IAuthProviderProps {
   children: ReactNode;
@@ -35,7 +35,7 @@ interface iAuthContext {
   user: IUser;
   setUser: Dispatch<SetStateAction<IUser>>;
   loading: boolean;
-  setLoading: Dispatch<SetStateAction<boolean>>
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 export const AuthContext = createContext({} as iAuthContext);
@@ -48,19 +48,19 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     const token = localStorage.getItem("@astro4media:token");
 
     if (token) {
-        try {
-            const data = await autoLogin()
-            setUser(data)    
-        } catch (error) {
-            console.error(error)
-        }
+      try {
+        const data = await autoLogin();
+        setUser(data);
+      } catch (error) {
+        console.error(error);
+      }
     }
-    setLoading(false)
+    setLoading(false);
   }
 
   useEffect(() => {
-    loadUser()
-  }, [])
+    loadUser();
+  }, []);
 
   return (
     <AuthContext.Provider
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
         user,
         setUser,
         loading,
-        setLoading
+        setLoading,
       }}
     >
       {children}
