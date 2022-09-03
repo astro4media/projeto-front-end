@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { autoLogin } from "../services/autoLogin";
+import { autoLogin } from "../services/Astro4MediaAPI/autoLogin";
 
 interface IAuthProviderProps {
   children: ReactNode;
