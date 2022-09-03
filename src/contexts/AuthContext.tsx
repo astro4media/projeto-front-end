@@ -21,6 +21,14 @@ interface IUserData {
   bio: string;
 }
 
+export interface IUserRegister {
+  name: String;
+  email: String;
+  password: String;
+  bio: String;
+  avatar: String | null;
+}
+
 export interface IUser {
   accessToken: string;
   user: IUserData;
