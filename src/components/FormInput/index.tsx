@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { ReactNode } from "react";
 import {
   DeepMap,
@@ -27,7 +28,7 @@ interface IFormInputProps {
   label: string;
   register: UseFormRegister<any>;
   errors: TFieldErrors;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const FormInput = ({
