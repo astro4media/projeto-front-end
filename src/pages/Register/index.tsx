@@ -3,19 +3,25 @@ import FormInput from "../../components/formInput";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useContext } from "react";
-import { useAuth } from "../../contexts/AuthContext";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { IUserRegister, useAuth } from "../../contexts/AuthContext";
 import ContainerRegister from "./styles";
+import { userRegister } from "../../services/userRegister";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { setLoading } = useAuth();
   const schema = yup.object({
-    nome: yup.string().required("O nome é obrigatório"),
+    name: yup.string().required("O nome é obrigatório"),
     email: yup
       .string()
       .email("Deve ser um email")
       .required("O email é obrigatório"),
-    senha: yup.string().required("A senha é obrigatória").min(8),
+    password: yup
+      .string()
+      .required("A senha é obrigatória")
+      .min(6, "A senha deve ser mais que 6 caracteres"),
     confirmarSenha: yup
       .string()
       .oneOf([yup.ref("password")], "A confirmação deve ser igual a senha"),
@@ -25,8 +31,7 @@ const Register = () => {
       .matches(
         /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
         "Adicione uma URL valido!"
-      )
-      .required("Adicione um URL"),
+      ),
     check: yup.boolean().oneOf([true], "Preencha o termo de uso"),
   });
 
@@ -34,7 +39,42 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm<IUserRegister>({ resolver: yupResolver(schema) });
+
+  const navigate = useNavigate();
+
+  const registerSubmit = async (formData: IUserRegister) => {
+    await userRegister(formData)
+      .then((formData) => {
+        console.log("Funfo");
+        toast.success("Conta criada com sucesso!", {
+          position: "top-right",
+          autoClose: 2000,
+          theme: "dark",
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setTimeout(function () {
+          navigate("/login");
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Deu ruim mermão!", {
+          position: "top-right",
+          autoClose: 2000,
+          theme: "dark",
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  };
 
   return (
     <ContainerRegister>
@@ -44,15 +84,14 @@ const Register = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="div-main">
+        <div className="">
           <figure>
             <img src="" alt="logo" />
           </figure>
-          
-          <form onSubmit={handleSubmit((FormData) => console.log())}>
-            <h1 className="title-register">Cadastrar</h1>
+          <form onSubmit={handleSubmit(registerSubmit)}>
+            <h1>Cadastrar</h1>
             <FormInput
-              id="nome"
+              id="name"
               type="text"
               label="Nome"
               register={register}
@@ -68,7 +107,7 @@ const Register = () => {
               children
             ></FormInput>
             <FormInput
-              id="senha"
+              id="password"
               type="text"
               label="Senha"
               register={register}
@@ -100,23 +139,21 @@ const Register = () => {
               children
             ></FormInput>
 
-            <div className="div-checkbox">
-              <FormInput
-                id="check"
-                type="checkbox"
-                label=""
-                register={register}
-                errors={errors}
-              >   
+            <FormInput
+              id="check"
+              type="checkbox"
+              label="Termos de uso"
+              register={register}
+              errors={errors}
+            >
               <p>Concordo com os termos de uso</p>
-              </FormInput>
-              
-            </div>
+            </FormInput>
 
             <button type="submit">Cadastrar</button>
           </form>
         </div>
       </motion.div>
+      <ToastContainer />
     </ContainerRegister>
   );
 };
