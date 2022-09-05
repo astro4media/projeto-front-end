@@ -4,13 +4,12 @@ import { clearMedia, TMediaType } from "./utils";
 interface IGetDiscover {
   page: number;
   results: IMedia[];
-  total_pages: number;
 }
 
 type IDiscoverMedia = (
   mediaType: TMediaType,
   genreId: number,
-  page: number
+  page?: number
 ) => Promise<IMedia[]>;
 
 const discoverMedia: IDiscoverMedia = async (mediaType, genreId, page) => {

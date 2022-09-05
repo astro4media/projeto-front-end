@@ -11,7 +11,7 @@ interface ITMDBResponse {
 type TListMedias = (
   mediaType: TMediaType,
   mediaSession: TMediaSesion,
-  page: number
+  page?: number
 ) => Promise<IMedia[]>;
 
 const listMedias: TListMedias = async (mediaType, mediaSession, page = 1) => {

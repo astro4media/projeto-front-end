@@ -3,6 +3,7 @@ import getMedia from "./getMedia";
 import listMedias from "./listMedias";
 import discoverMedia from "./discoverMedia";
 import listMediaGenres from "./listMediaGenres";
+import searchMedia from "./searchMedia";
 
 export interface IUtil {
   name: string;
@@ -48,4 +49,4 @@ const tmdb = axios.create({
 });
 
 export default tmdb;
-export { getMedia, listMedias, discoverMedia, listMediaGenres };
+export { getMedia, listMedias, discoverMedia, listMediaGenres, searchMedia };
