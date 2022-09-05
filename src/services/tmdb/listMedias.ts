@@ -11,7 +11,7 @@ interface ITMDBResponse {
 type TListMedias = (
   mediaType: TMediaType,
   mediaSession: TMediaSesion
-) => Promise<any>;
+) => Promise<IMedia[]>;
 
 const listMedias: TListMedias = async (mediaType, mediaSession) => {
   const { data } = await tmdb.get<ITMDBResponse>(

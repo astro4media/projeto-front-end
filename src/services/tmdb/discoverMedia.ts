@@ -7,7 +7,10 @@ interface IGetDiscover {
   total_pages: number;
 }
 
-type IDiscoverMedia = (mediaType: TMediaType, genreId: number) => Promise<any>;
+type IDiscoverMedia = (
+  mediaType: TMediaType,
+  genreId: number
+) => Promise<IMedia[]>;
 
 const discoverMedia: IDiscoverMedia = async (mediaType, genreId) => {
   const { data } = await tmdb.get<IGetDiscover>(`discover/${mediaType}`, {
