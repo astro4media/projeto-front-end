@@ -1,5 +1,5 @@
 import tmdb, { IActor, IMedia } from ".";
-import { clearMedia, params, TMediaType } from "./utils";
+import { clearMedia, TMediaType } from "./utils";
 
 interface IGetMediaResponse
   extends Omit<IMedia, "release_date" | "runtime" | "credits" | "genre_ids"> {
@@ -15,7 +15,7 @@ type TGetMedia = (
 
 const getMedia: TGetMedia = async (mediaType, mediaId) => {
   const { data } = await tmdb.get<IMedia>(`/${mediaType}/${mediaId}`, {
-    params: { ...params, append_to_response: "credits" },
+    params: { append_to_response: "credits" },
   });
 
   const responseMedia = clearMedia(

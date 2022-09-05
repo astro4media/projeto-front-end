@@ -1,5 +1,5 @@
 import tmdb, { IMedia } from ".";
-import { clearMedia, params, TMediaType } from "./utils";
+import { clearMedia, TMediaType } from "./utils";
 
 type TMediaSesion = "top_rated" | "popular" | "latest";
 
@@ -15,10 +15,7 @@ type TListMedias = (
 
 const listMedias: TListMedias = async (mediaType, mediaSession) => {
   const { data } = await tmdb.get<ITMDBResponse>(
-    `${mediaType}/${mediaSession}`,
-    {
-      params,
-    }
+    `${mediaType}/${mediaSession}`
   );
 
   const medias = data.results.map((media) => clearMedia(media));

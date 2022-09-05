@@ -1,7 +1,12 @@
 import axios from "axios";
+import getMedia from "./getMedia";
+import listMedias from "./listMedias";
+import discoverMedia from "./discoverMedia";
+import listMediaGenres from "./listMediaGenres";
 
 export interface IUtil {
   name: string;
+  id: number;
 }
 
 export interface IProductionCompany extends IUtil {
@@ -36,6 +41,11 @@ export interface IMedia {
 const tmdb = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   timeout: 5000,
+  params: {
+    api_key: "294f48cf4e33570dfc042f75eff76313",
+    language: "pt-BR",
+  },
 });
 
 export default tmdb;
+export { getMedia, listMedias, discoverMedia, listMediaGenres };

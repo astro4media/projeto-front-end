@@ -19,11 +19,6 @@ type TMediaProps = keyof TMediaPropsRest | "cast";
 
 type TClearMedia = (media: IMedia, ...mediaProps: TMediaProps[]) => any;
 
-const params = {
-  api_key: "294f48cf4e33570dfc042f75eff76313",
-  language: "pt-BR",
-};
-
 function convertToHours(totalMinutes: number) {
   const minutes = totalMinutes % 60;
   const hours = Math.floor(totalMinutes / 60);
@@ -84,5 +79,5 @@ const clearMedia: TClearMedia = (media, ...mediaProps) => {
   return responseMedia;
 };
 
-export { clearMedia, params };
+export { clearMedia };
 export type { TMediaType };
