@@ -10,12 +10,16 @@ interface ITMDBResponse {
 
 type TListMedias = (
   mediaType: TMediaType,
-  mediaSession: TMediaSesion
+  mediaSession: TMediaSesion,
+  page: number
 ) => Promise<IMedia[]>;
 
-const listMedias: TListMedias = async (mediaType, mediaSession) => {
+const listMedias: TListMedias = async (mediaType, mediaSession, page = 1) => {
+  const params = { page };
+
   const { data } = await tmdb.get<ITMDBResponse>(
-    `${mediaType}/${mediaSession}`
+    `${mediaType}/${mediaSession}`,
+    { params }
   );
 
   const medias = data.results.map((media) => clearMedia(media));
