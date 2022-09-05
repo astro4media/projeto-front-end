@@ -8,7 +8,7 @@ interface IGetGenreResponse {
 type TListMediaGenres = (mediaType: TMediaType) => Promise<any>;
 
 const listMediaGenres: TListMediaGenres = async (mediaType) => {
-  const { data } = await tmdb.get(`genre/${mediaType}/list`);
+  const { data } = await tmdb.get<IGetGenreResponse>(`genre/${mediaType}/list`);
   const { genres } = data;
 
   return genres;
