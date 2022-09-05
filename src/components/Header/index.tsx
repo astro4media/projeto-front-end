@@ -1,5 +1,14 @@
+
+
+import HeaderContainer from "./styles";
+import DrawerBar from "./treeBar";
+
 const Header = () => {
-  return <></>;
+  return (
+    <HeaderContainer>
+      <DrawerBar />
+    </HeaderContainer>
+  );
 };
 
 export default Header;
