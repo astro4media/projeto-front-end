@@ -16,7 +16,7 @@ const RoutesMain = () => {
         {/* <Route element={<ProtectedRoutes />}>  PROTECTED ROUTES DISABLED FOR NOW*/}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/movie" element={<Movie />} />
+          <Route path="/movie" element={<Movie nome={""} descricao={""} duracao={""} categoria={""} imagem={""}/>} />
         {/* </Route> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
