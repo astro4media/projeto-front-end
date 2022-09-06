@@ -26,7 +26,7 @@ const Dashboard = () => {
       transition={{ duration: 0.6 }}
     >
       <Header />
-      {/* <List sessionTitle="Top Rated" medias={medias} desc /> */}
+      <List sessionTitle="Filmes mais bem avaliados" medias={medias} desc />
     </Container>
   );
 };
