@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import FormInput from "../../components/FormInput";
+import FormInput from "../../components/formInput";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

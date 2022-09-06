@@ -1,7 +1,7 @@
 import tmdb, { IMedia } from ".";
 import { clearMedia, TMediaType } from "./utils";
 
-type TMediaSesion = "top_rated" | "popular" | "latest";
+type TMediaSession = "top_rated" | "popular" | "latest";
 
 interface ITMDBResponse {
   page: number;
@@ -10,7 +10,7 @@ interface ITMDBResponse {
 
 type TListMedias = (
   mediaType: TMediaType,
-  mediaSession: TMediaSesion,
+  mediaSession: TMediaSession,
   page?: number
 ) => Promise<IMedia[]>;
 
@@ -22,7 +22,7 @@ const listMedias: TListMedias = async (mediaType, mediaSession, page = 1) => {
     { params }
   );
 
-  const medias = data.results.map((media) => clearMedia(media));
+  const medias: IMedia[] = data.results.map((media) => clearMedia(media));
 
   return medias;
 };
