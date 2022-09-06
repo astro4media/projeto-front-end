@@ -1750,6 +1750,17 @@
     "@babel/runtime" "^7.18.9"
     "@mui/utils" "^5.10.3"
     prop-types "^15.8.1"
+<<<<<<< HEAD
+=======
+
+"@mui/styled-engine-sc@^5.10.3":
+  version "5.10.3"
+  resolved "https://registry.yarnpkg.com/@mui/styled-engine-sc/-/styled-engine-sc-5.10.3.tgz#4ba9b6db83c40ebe4622586abf786cb8952f5ae2"
+  integrity sha512-IHcNTnGEcFCQgghHqBo6BXOzMOpqGXxSu5JEoVCncPVxVZ3/CEtFTyUqnMaiFkpK5DY1Qx1YnqdNBSMhzP1IhQ==
+  dependencies:
+    "@babel/runtime" "^7.18.9"
+    prop-types "^15.8.1"
+>>>>>>> 58ed5a4d82c41989712c13236ddb35900c1dd0d2
 
 "@mui/styled-engine@^5.10.3":
   version "5.10.3"
