@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import MovieModal from "../../components/MovieModal";
 import { IMovie } from "../../components/MovieModal";
 import ContainerMovieScreen from "./styles";
+import Header from "../../components/Header";
 
 const Movie = ({ nome, descricao, duracao, categoria, imagem }: IMovie) => {
   return (
@@ -12,7 +13,7 @@ const Movie = ({ nome, descricao, duracao, categoria, imagem }: IMovie) => {
       transition={{ duration: 0.6 }}
     >
       <ContainerMovieScreen>
-        <h1>Movie</h1>
+        <Header/>
         <MovieModal
           nome={nome}
           descricao={descricao}
