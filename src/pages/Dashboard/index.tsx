@@ -14,7 +14,7 @@ const Dashboard = () => {
       setMedias(data);
     };
 
-    test()
+    test();
   }, []);
 
   return (

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import FormInput from "../../components/formInput";
+import FormInput from "../../components/FormInput";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,7 +7,7 @@ import { IUserLogin } from "../../contexts/AuthContext";
 import { useState } from "react";
 import { RiEyeCloseLine } from "react-icons/ri";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logoName from "../../assets/images/logoName.svg";
 import rocket from "../../assets/images/rocketLogo.svg";
 import { toast } from "react-toastify";
@@ -169,10 +169,10 @@ const Login = () => {
             Entrar
           </button>
           <span>
-            Não possui uma conta?{" "}
-            <a className="link-register" onClick={() => navigate("/register")}>
+            Não possui uma conta?
+            <Link className="link-register" to={"/register"}>
               Criar
-            </a>
+            </Link>
           </span>
         </motion.form>
       </motion.div>
