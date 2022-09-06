@@ -15,7 +15,7 @@ const Dashboard = () => {
       <div>
         <button onClick={() => setOpen(true)}>ATIVAR</button>
       <button onClick={() => setOpen(true)}>ATIVAR2</button>
-      <ModalComponent open={open} onClose={() => setOpen(false)}>
+      <ModalComponent navigate='..' open={open}>
         <div>
           <h1>OI</h1>
         </div>

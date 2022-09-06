@@ -1,40 +1,32 @@
 import { ReactNode, useState } from "react";
 // import { MdHighlightOff } from "react-icons/md";
-// import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import DeleteIcon from "@mui/icons-material/Delete;
+import { Link } from "react-router-dom";
 import { Modal,Box } from "@mui/material";
 import ModalStyle from "./styles"
 
 interface IModalProps {
-  // id: String;
   open: true|false;
   children?:ReactNode;
-  onClose: () => void ;
+  navigate: any;
+  title?: String;
 }
 
-// const style = {
-//   position: 'absolute' as 'absolute',
-//   top: '50%',
-//   left: '50%',
-//   transform: 'translate(-50%, -50%)',
-//   width: 400,
-//   bgcolor: 'background.paper',
-//   border: '2px solid #000',
-//   boxShadow: 24,
-//   p: 4,
-// };
 
 
-
-const ModalComponent = ({open, onClose, children}:IModalProps) => {
+const ModalComponent = ({open, navigate, title, children}:IModalProps) => {
   
   
   return(<>
-      <Modal open={open} onClose={onClose}>
+      <Modal open={open}>
         <ModalStyle>
         <Box className="boxModal">
-          
           <Box className="topModal">
-            <button onClick={()=> onClose()}>X</button>
+            <h2>{title}</h2>
+            <Link to={navigate}>
+              <button>X</button>
+              <DeleteIcon></DeleteIcon>
+            </Link>
           </Box>
           <Box className="contentModal">
             {children}
