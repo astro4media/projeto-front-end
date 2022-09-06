@@ -1,7 +1,10 @@
 import Global from './styles/global';
 import Routes from "./routes";
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import "swiper/css";
+import "swiper/css/navigation";
 
 function App() {
   return (
