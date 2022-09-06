@@ -7,7 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IUserRegister, useAuth } from "../../contexts/AuthContext";
 import ContainerRegister from "./styles";
-import { userRegister } from "../../services/userRegister";
+import { userRegister } from "../../services/Astro4MediaAPI";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Register = () => {
