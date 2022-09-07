@@ -16,13 +16,6 @@ const List = ({ sessionTitle, medias, desc }: IListProps) => {
   return (
     <>
       <h2>{sessionTitle}</h2>
-<<<<<<< HEAD
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        {medias.map((media) => {
-          return (
-            <SwiperSlide key={media.id}>
-              <Card media={media} desc={desc} />
-=======
       <StyledSwiper
         spaceBetween={25}
         navigation={true}
@@ -51,7 +44,6 @@ const List = ({ sessionTitle, medias, desc }: IListProps) => {
           return (
             <SwiperSlide key={media.id}>
               <Card media={media} />
->>>>>>> develop
             </SwiperSlide>
           );
         })}

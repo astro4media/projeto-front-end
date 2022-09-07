@@ -22,7 +22,7 @@ const ProfileCard = () => {
       spacing={{ xs: 1, sm: 2 }}
       direction={["column", "row"]}
       divider={<Divider orientation="vertical" flexItem />}
-      sx={{ width: "100%" }}
+      sx={{ width: "100%", px: 20 }}
     >
       <Avatar
         src={avatar}

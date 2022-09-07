@@ -4,7 +4,6 @@ const Container = styled.div`
   background-color: #1e1e1e;
   color: #fff;
   min-height: 100vh;
-  padding: 20px;
 
   .avatarContainer {
     width: 70%;
@@ -13,6 +12,10 @@ const Container = styled.div`
 
   .userSessions {
     max-width: 100%;
+
+    h2 {
+      margin-left: 3rem;
+    }
   }
 
   .noSessions {

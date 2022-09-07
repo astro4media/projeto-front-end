@@ -19,22 +19,6 @@ const UserLists = () => {
 
   useEffect(() => {
     const loadMedias = async () => {
-      // const tmdb = await getMedia("movie", 345);
-      // const data = {
-      //   markups: "Parados",
-      //   userId: 0,
-      //   tmdbMedia: tmdb,
-      //   mediaType: "movie",
-      // };
-      // const token = localStorage.getItem("@astro4media:token");
-      // const auth = `Bearer ${token}`;
-
-      // await api.post("medias", data, {
-      //   headers: {
-      //     Authorization: auth,
-      //   },
-      // });
-
       const userMedias = await getUserMedias(user.id);
 
       console.log();
