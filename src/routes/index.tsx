@@ -13,11 +13,12 @@ const RoutesMain = () => {
     <AnimatePresence>
       <Routes>
         <Route path="/" element={<Navigate to={"/dashboard"} />} />
-        {/* <Route element={<ProtectedRoutes />}>  PROTECTED ROUTES DISABLED FOR NOW*/}
+        <Route element={<ProtectedRoutes />}>
+          {/* PROTECTED ROUTES DISABLED FOR NOW */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/movie" element={<Movie />} />
-        {/* </Route> */}
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

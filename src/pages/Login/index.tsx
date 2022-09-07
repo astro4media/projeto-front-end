@@ -41,7 +41,7 @@ const Login = () => {
 
   const onSubmit = async (data: IUserLogin) => {
     await userLogin(data)
-      .then(() => {
+      .then((data) => {
         toast.success("Login feito com sucesso!", {
           position: "top-right",
           autoClose: 5000,
@@ -51,6 +51,9 @@ const Login = () => {
           draggable: true,
           progress: undefined,
         });
+        localStorage.removeItem("@astro4media:token");
+        localStorage.setItem("@astro4media:token", data.accessToken);
+
         navigate("/dashboard");
       })
       .catch(() => {
