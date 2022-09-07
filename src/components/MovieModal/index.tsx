@@ -1,31 +1,53 @@
 import ContainerMovieModal from "./styles";
 
+interface genre {
+  id: number;
+  name: string;
+}
+
 export interface IMovie {
-  nome: string;
-  descricao: string;
-  duracao: string;
-  categoria: string;
-  imagem: string;
+  title: string;
+  overview: string;
+  runtime: string;
+  genres: genre[];
+  poster_path: string;
+  backdrop_path: string;
 }
 
 const MovieModal = ({
-  nome,
-  descricao,
-  duracao,
-  categoria,
-  imagem,
+  title,
+  overview,
+  runtime,
+  genres,
+  poster_path,
+  backdrop_path,
 }: IMovie) => {
+  console.log(
+    genres?.reduce((acc, { name }) => name + ", " + acc, "").replace(/, $/, "")
+  );
+
   return (
-    <ContainerMovieModal>
-      <div className="div-modal">
-        <figure>
-          <img src={imagem} alt="imagem" />
-        </figure>
-        <div className="div-content">
-          <h2>{nome}nome</h2>
-          <h4>{descricao}descricao</h4>
-          <span>{duracao}duracao</span>
-          <p>{categoria}categoria</p>
+    <ContainerMovieModal background={backdrop_path}>
+      <div className="div-main">
+        <img src={backdrop_path} alt="" />
+        <div className="div-page">
+          <figure>
+            <img src={poster_path} alt="imagem" />
+          </figure>
+          <div className="div-content">
+            <h2>{title}</h2>
+            <h4>{overview}</h4>
+            <span>{runtime}</span>
+            {genres?.length > 0 ? (
+              <p>
+                {genres
+                  ?.reduce((acc, { name }) => name + ", " + acc, "")
+                  .replace(/, $/, "")}
+              </p>
+            ) : (
+              <p>Gênero indisponível</p>
+            )}
+          </div>
         </div>
       </div>
     </ContainerMovieModal>

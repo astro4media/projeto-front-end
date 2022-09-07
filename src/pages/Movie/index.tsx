@@ -1,10 +1,31 @@
 import { motion } from "framer-motion";
-import MovieModal from "../../components/MovieModal";
-import { IMovie } from "../../components/MovieModal";
+import MovieModal, { IMovie } from "../../components/MovieModal";
 import ContainerMovieScreen from "./styles";
 import Header from "../../components/Header";
+import { getMedia } from "../../services/tmdb";
+import { useEffect, useState } from "react";
 
-const Movie = ({ nome, descricao, duracao, categoria, imagem }: IMovie) => {
+
+
+
+const Movie = () => {
+
+  const [movie, setMovie] = useState({} as IMovie)
+
+  useEffect(() => {
+    async function test() {
+      const dataTestmidia = await getMedia("movie", 278);
+
+      setMovie(dataTestmidia)
+      
+    }
+    test();
+  }, []);
+
+
+  console.log(movie.overview)
+ 
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -13,14 +34,15 @@ const Movie = ({ nome, descricao, duracao, categoria, imagem }: IMovie) => {
       transition={{ duration: 0.6 }}
     >
       <ContainerMovieScreen>
-        <Header/>
+        <Header />
         <MovieModal
-          nome={nome}
-          descricao={descricao}
-          duracao={duracao}
-          categoria={categoria}
-          imagem={imagem}
-        />
+          title={movie.title}
+          overview={movie.overview}
+          runtime={movie.runtime}
+          genres={movie.genres}
+          poster_path={movie.poster_path}
+          backdrop_path={movie.backdrop_path}        
+        />  
       </ContainerMovieScreen>
     </motion.div>
   );

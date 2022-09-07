@@ -5,8 +5,9 @@ const ContainerMovieScreen = styled.div`
 
 color: #FFFFFF;
 background-color: #1E1E1E;
-width: 100vw;
-height: 100vh;
+width: 100%;
+height: 100%;
+min-height: 100vh;
 display: flex;
 flex-direction: column;
 align-items: center;
