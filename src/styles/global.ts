@@ -24,5 +24,21 @@ export default createGlobalStyle`
         cursor: pointer;
     }
 
+    * {
     
+    }
+
+    /* Works on Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+    width: 12px;
+    }
+
+    *::-webkit-scrollbar-track {
+    background: #171617;
+    }
+
+    *::-webkit-scrollbar-thumb {
+    background-color: #320c63;
+    border-radius: 20px;
+    }
 `;

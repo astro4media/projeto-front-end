@@ -23,7 +23,7 @@ const listMedias: TListMedias = async (mediaType, mediaSession, page = 1) => {
   );
 
   const medias: IMedia[] = data.results.map((media) => clearMedia(media));
-
+  
   return medias;
 };
 

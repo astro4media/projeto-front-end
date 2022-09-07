@@ -44,6 +44,8 @@ interface iAuthContext {
   setUser: Dispatch<SetStateAction<IUser>>;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
+  idMovie: number | null;
+  setIdMovie: Dispatch<SetStateAction<number>>;
 }
 
 export const AuthContext = createContext({} as iAuthContext);
@@ -51,6 +53,8 @@ export const AuthContext = createContext({} as iAuthContext);
 export const AuthProvider = ({ children }: IAuthProviderProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
   const [loading, setLoading] = useState(true);
+  const [idMovie, setIdMovie] = useState(0)
+  console.log(idMovie)
 
   async function loadUser() {
     const token = localStorage.getItem("@astro4media:token");
@@ -77,6 +81,8 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
         setUser,
         loading,
         setLoading,
+        idMovie,
+        setIdMovie, 
       }}
     >
       {children}
