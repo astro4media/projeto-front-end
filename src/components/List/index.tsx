@@ -11,16 +11,14 @@ interface IListProps {
 }
 
 const List = ({ sessionTitle, medias, desc }: IListProps) => {
-
-
   return (
     <>
       <h2>{sessionTitle}</h2>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        { medias.map((media) => {
+        {medias.map((media) => {
           return (
-            <SwiperSlide>
-              <Card key={media.id} media={media} desc={desc} />
+            <SwiperSlide key={media.id}>
+              <Card media={media} desc={desc} />
             </SwiperSlide>
           );
         })}

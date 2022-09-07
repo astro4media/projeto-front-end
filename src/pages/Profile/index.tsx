@@ -1,4 +1,8 @@
 import { motion } from "framer-motion";
+import Header from "../../components/Header";
+import ProfileCard from "../../components/ProfileCard";
+import UserLists from "../../components/UserLists";
+import Container from "./styles";
 
 const Profile = () => {
   return (
@@ -8,7 +12,11 @@ const Profile = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <h1>Profile</h1>
+      <Container>
+        <Header />
+        <ProfileCard />
+        <UserLists />
+      </Container>
     </motion.div>
   );
 };

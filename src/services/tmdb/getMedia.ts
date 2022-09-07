@@ -1,17 +1,10 @@
-import tmdb, { IActor, IMedia } from ".";
+import tmdb, { IMedia } from ".";
 import { clearMedia, TMediaType } from "./utils";
-
-interface IGetMediaResponse
-  extends Omit<IMedia, "release_date" | "runtime" | "credits" | "genre_ids"> {
-  release_date: string;
-  runtime: string;
-  cast: IActor[];
-}
 
 type TGetMedia = (
   mediaType: TMediaType,
   mediaId: string | number
-) => Promise<IGetMediaResponse>;
+) => Promise<IMedia>;
 
 const getMedia: TGetMedia = async (mediaType, mediaId) => {
   const { data } = await tmdb.get<IMedia>(`/${mediaType}/${mediaId}`, {
