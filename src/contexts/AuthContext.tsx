@@ -6,8 +6,12 @@ import {
   useContext,
   useEffect,
   useState,
+  ReactEventHandler,
 } from "react";
+
 import { autoLogin } from "../services/Astro4MediaAPI/autoLogin";
+import defaultCardImg from "../assets/images/defaultCardImg.svg";
+import { IGetMediaResponse } from "../services/tmdb/getMedia";
 
 interface IAuthProviderProps {
   children: ReactNode;
@@ -39,13 +43,22 @@ export interface IUserLogin {
   password: string;
 }
 
+
+
 interface iAuthContext {
   user: IUser;
   setUser: Dispatch<SetStateAction<IUser>>;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  idMovie: number | null;
-  setIdMovie: Dispatch<SetStateAction<number>>;
+  idMovie: string;
+  setIdMovie: Dispatch<SetStateAction<string>>;
+  error: ReactEventHandler<HTMLImageElement>;
+  assistidos: IGetMediaResponse[];
+  setAssistidos: Dispatch<SetStateAction<IGetMediaResponse[]>>;
+  assistir: IGetMediaResponse[];
+  setAssistir: Dispatch<SetStateAction<IGetMediaResponse[]>>;
+  favoritos: IGetMediaResponse[];
+  setFavoritos: Dispatch<SetStateAction<IGetMediaResponse[]>>;
 }
 
 export const AuthContext = createContext({} as iAuthContext);
@@ -53,8 +66,20 @@ export const AuthContext = createContext({} as iAuthContext);
 export const AuthProvider = ({ children }: IAuthProviderProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
   const [loading, setLoading] = useState(true);
-  const [idMovie, setIdMovie] = useState(0)
-  console.log(idMovie)
+  const [idMovie, setIdMovie] = useState('')
+  
+  const [assistidos, setAssistidos] = useState<IGetMediaResponse[]>([])
+  const [assistir, setAssistir] = useState<IGetMediaResponse[]>([])
+  const [favoritos, setFavoritos] = useState<IGetMediaResponse[]>([])
+
+  console.log(assistidos)
+  console.log(assistir)
+  console.log(favoritos)
+  
+  const error: ReactEventHandler<HTMLImageElement> = ({ currentTarget }) => {
+    currentTarget.onerror = null;
+    currentTarget.src = defaultCardImg;
+  };
 
   async function loadUser() {
     const token = localStorage.getItem("@astro4media:token");
@@ -82,7 +107,14 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
         loading,
         setLoading,
         idMovie,
-        setIdMovie, 
+        setIdMovie,
+        error,
+        assistidos,
+        setAssistidos,
+        assistir,
+        setAssistir,
+        favoritos,
+        setFavoritos,
       }}
     >
       {children}

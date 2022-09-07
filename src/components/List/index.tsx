@@ -43,7 +43,7 @@ const List = ({ sessionTitle, medias, desc }: IListProps) => {
         {medias.map((media) => {
           return (
             <SwiperSlide key={media.id}>
-              <Card media={media} desc />
+              <Card media={media} mediaType='movie' desc />
             </SwiperSlide>
           );
         })}

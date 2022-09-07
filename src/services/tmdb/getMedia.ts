@@ -1,7 +1,7 @@
 import tmdb, { IActor, IMedia } from ".";
 import { clearMedia, TMediaType } from "./utils";
 
-interface IGetMediaResponse
+export interface IGetMediaResponse
   extends Omit<IMedia, "release_date" | "runtime" | "credits" | "genre_ids"> {
   release_date: string;
   runtime: string;
