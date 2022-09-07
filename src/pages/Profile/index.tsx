@@ -1,3 +1,4 @@
+import { Divider, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import Header from "../../components/Header";
 import ProfileCard from "../../components/ProfileCard";
@@ -14,8 +15,12 @@ const Profile = () => {
     >
       <Container>
         <Header />
-        <ProfileCard />
-        <UserLists />
+        <main>
+          <Stack divider={<Divider flexItem />} spacing={5} alignItems="center">
+            <ProfileCard />
+            <UserLists />
+          </Stack>
+        </main>
       </Container>
     </motion.div>
   );

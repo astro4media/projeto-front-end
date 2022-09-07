@@ -1,6 +1,7 @@
 import { ReactEventHandler } from "react";
 import { IMedia } from "../../services/tmdb";
 import defaultCardImg from "../../assets/images/defaultCardImg.svg";
+import { ListContainer } from "./styles";
 
 interface ICardProps {
   media: IMedia;
@@ -16,17 +17,17 @@ const Card = ({ media, desc }: ICardProps) => {
   };
 
   return (
-    <div>
+    <ListContainer>
       <img src={poster_path} alt={title} onError={error} />
 
       {desc && (
         <div>
           <h3>{title}</h3>
-          <p>{release_date}</p>
-          <p>{vote_average}</p>
+          <p>Lançamento: {release_date}</p>
+          <p>Pontuação média: {vote_average}</p>
         </div>
       )}
-    </div>
+    </ListContainer>
   );
 };
 

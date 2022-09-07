@@ -22,8 +22,12 @@ const ProfileCard = () => {
       spacing={{ xs: 1, sm: 2 }}
       direction={["column", "row"]}
       divider={<Divider orientation="vertical" flexItem />}
+      sx={{ width: "100%" }}
     >
-      <Avatar src={avatar} sx={{ width: [120, 150], height: [120, 150] }}>
+      <Avatar
+        src={avatar}
+        sx={{ width: [120, 150], height: [120, 150], bgcolor: "#343434" }}
+      >
         <DefaultAvatar />
       </Avatar>
       <Stack sx={{ width: "100%" }} alignItems={["center", "flex-start"]}>

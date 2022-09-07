@@ -1,9 +1,11 @@
+import { Stack } from "@mui/system";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import getUserMedias, {
-  IUserMedia,
-} from "../../services/Astro4MediaAPI/getUserMedias";
-import { IMedia } from "../../services/tmdb";
+import api from "../../services/Astro4MediaAPI";
+import getUserMedias from "../../services/Astro4MediaAPI/getUserMedias";
+import { getMedia, IMedia } from "../../services/tmdb";
+import Button from "../../styles/Button";
 import List from "../List";
 
 interface IUserSession {
@@ -17,39 +19,74 @@ const UserLists = () => {
 
   useEffect(() => {
     const loadMedias = async () => {
+      // const tmdb = await getMedia("movie", 345);
+      // const data = {
+      //   markups: "Parados",
+      //   userId: 0,
+      //   tmdbMedia: tmdb,
+      //   mediaType: "movie",
+      // };
+      // const token = localStorage.getItem("@astro4media:token");
+      // const auth = `Bearer ${token}`;
+
+      // await api.post("medias", data, {
+      //   headers: {
+      //     Authorization: auth,
+      //   },
+      // });
+
       const userMedias = await getUserMedias(user.id);
 
-      const mediaMarkups = ["Favoritos", "Assistindo", "Assistidos", "Parados"];
+      console.log();
 
-      const sessions = mediaMarkups.map((mediaMarkup) => {
-        const mediaSession = userMedias.reduce((mediaSession, userMedia) => {
-          const { markups } = userMedia;
-          if (markups === mediaMarkup) {
-            mediaSession.push(userMedia.tmdbMedia);
-          }
-          return mediaSession;
-        }, [] as IMedia[]);
+      if (userMedias.length) {
+        const mediaMarkups = [
+          "Favoritos",
+          "Assistindo",
+          "Assistidos",
+          "Parados",
+        ];
 
-        return {
-          title: mediaMarkup,
-          session: mediaSession,
-        };
-      });
+        const sessions = mediaMarkups.map((mediaMarkup) => {
+          const mediaSession = userMedias.reduce((mediaSession, userMedia) => {
+            const { markups } = userMedia;
+            if (markups === mediaMarkup) {
+              mediaSession.push(userMedia.tmdbMedia);
+            }
+            return mediaSession;
+          }, [] as IMedia[]);
 
-      console.log(sessions);
-      setUserSessions(sessions);
+          return {
+            title: mediaMarkup,
+            session: mediaSession,
+          };
+        });
+
+        console.log(sessions);
+        setUserSessions(sessions);
+      }
     };
 
     loadMedias();
   }, []);
 
   return (
-    <section>
-      {userSessions.map(({ title, session }, index) => {
-        if (session.length) {
-          return <List key={title} medias={session} sessionTitle={title} />;
-        }
-      })}
+    <section className="userSessions">
+      {userSessions.length ? (
+        userSessions.map(({ title, session }, index) => {
+          if (session.length) {
+            return <List key={title} medias={session} sessionTitle={title} />;
+          }
+        })
+      ) : (
+        <Stack alignItems={"center"} className="noSessions">
+          <h3>Você ainda não adicionou nenhum filme à suas listas</h3>
+          <span>Olhe nosso catálgo e adicione</span>
+          <Link to="/dashboard">
+            <Button>Descubra mais</Button>
+          </Link>
+        </Stack>
+      )}
     </section>
   );
 };
