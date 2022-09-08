@@ -59,6 +59,8 @@ interface iAuthContext {
   setAssistir: Dispatch<SetStateAction<IGetMediaResponse[]>>;
   favoritos: IGetMediaResponse[];
   setFavoritos: Dispatch<SetStateAction<IGetMediaResponse[]>>;
+  movie: IGetMediaResponse;
+  setMovie: Dispatch<SetStateAction<IGetMediaResponse>>;
 }
 
 export const AuthContext = createContext({} as iAuthContext);
@@ -67,6 +69,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   const [user, setUser] = useState<IUserData>({} as IUserData);
   const [loading, setLoading] = useState(true);
   const [idMovie, setIdMovie] = useState('')
+  const [movie, setMovie] = useState<IGetMediaResponse>({} as IGetMediaResponse)
   
   const [assistidos, setAssistidos] = useState<IGetMediaResponse[]>([])
   const [assistir, setAssistir] = useState<IGetMediaResponse[]>([])
@@ -115,6 +118,8 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
         setAssistir,
         favoritos,
         setFavoritos,
+        movie,
+        setMovie
       }}
     >
       {children}

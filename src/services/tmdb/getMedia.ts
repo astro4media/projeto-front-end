@@ -1,4 +1,4 @@
-import tmdb, { IMedia } from ".";
+import tmdb, { IActor, IMedia } from ".";
 import { clearMedia, TMediaType } from "./utils";
 
 
@@ -6,7 +6,7 @@ export interface IGetMediaResponse
   extends Omit<IMedia, "release_date" | "runtime" | "credits" | "genre_ids"> {
   release_date: string;
   runtime: string;
-  cast: IActor[];
+  cast?: IActor[];
 }
 
 type TGetMedia = (

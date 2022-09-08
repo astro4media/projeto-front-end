@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import MovieModal, { IMovie } from "../../components/MovieModal";
 import ContainerMovieScreen from "./styles";
 import Header from "../../components/Header";
-import { getMedia } from "../../services/tmdb";
-import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
 
@@ -11,20 +9,20 @@ import { useAuth } from "../../contexts/AuthContext";
 
 const Movie = () => {
 
-  const [movie, setMovie] = useState({} as IMovie)
-  const { idMovie } = useAuth()
-  
+  // const [movieMidia, setMovieMidia] = useState({} as IMovie)
 
-  useEffect(() => {
-    async function test() {
-      const dataTestmidia = await getMedia("movie", idMovie.parseInt());
+  // useEffect(() => {
+  //   async function test() {
+  //     const dataTestmidia = await getMedia("movie", 278);
+  //     console.log(dataTestmidia)
+  //     setMovieMidia(dataTestmidia)
+  //   }
+  //   test();
+  // }, []);
 
-      setMovie(dataTestmidia)
-      
-    }
-    test();
-  }, []);
+  // console.log(movieMidia)
 
+const {movie} = useAuth()
 
   return (
     <motion.div

@@ -17,8 +17,8 @@ const ModalDashboard = () => {
     const navigate = useNavigate()
     const {setIdMovie} = useAuth()
     const { id, mediaType } = useParams()
-    const [movie, setMovie] = useState<IGetMediaResponse>({} as IGetMediaResponse)
-    const { error, setAssistidos, setAssistir, setFavoritos, assistidos, assistir, favoritos } = useAuth() 
+    // const [movie, setMovie] = useState<IGetMediaResponse>({} as IGetMediaResponse)
+    const { error, setAssistidos, setAssistir, setFavoritos, assistidos, assistir, favoritos, movie, setMovie } = useAuth() 
 
     useEffect(() => {
         async function teste() {
@@ -27,6 +27,7 @@ const ModalDashboard = () => {
         }
         teste()
     }, [])
+    console.log(movie)
 
     const addAssistidos= (e:IGetMediaResponse) => {
         if(assistidos.find(elem => elem.id === e.id)) {
