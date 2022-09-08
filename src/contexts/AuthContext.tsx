@@ -17,7 +17,7 @@ interface IAuthProviderProps {
   children: ReactNode;
 }
 
-interface IUserData {
+export interface IUserData {
   email: string;
   name: string;
   avatar: string;
@@ -46,8 +46,8 @@ export interface IUserLogin {
 
 
 interface iAuthContext {
-  user: IUser;
-  setUser: Dispatch<SetStateAction<IUser>>;
+  user: IUserData;
+  setUser: Dispatch<SetStateAction<IUserData>>;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
   idMovie: string;
@@ -64,7 +64,7 @@ interface iAuthContext {
 export const AuthContext = createContext({} as iAuthContext);
 
 export const AuthProvider = ({ children }: IAuthProviderProps) => {
-  const [user, setUser] = useState<IUser>({} as IUser);
+  const [user, setUser] = useState<IUserData>({} as IUserData);
   const [loading, setLoading] = useState(true);
   const [idMovie, setIdMovie] = useState('')
   
@@ -81,21 +81,21 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     currentTarget.src = defaultCardImg;
   };
 
-  async function loadUser() {
-    const token = localStorage.getItem("@astro4media:token");
-
-    if (token) {
-      try {
-        const data = await autoLogin();
-        setUser(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    setLoading(false);
-  }
-
   useEffect(() => {
+    async function loadUser() {
+      const token = localStorage.getItem("@astro4media:token");
+
+      if (token) {
+        try {
+          const data = await autoLogin();
+          setUser(data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      setLoading(false);
+    }
+
     loadUser();
   }, []);
 
@@ -122,6 +122,6 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   );
 };
 
-export const useAuth = () => {
+export const useAuth = (): iAuthContext => {
   return useContext(AuthContext);
 };
