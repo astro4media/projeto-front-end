@@ -7,6 +7,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Movie from "../pages/Movie";
 import Profile from "../pages/Profile";
+import About from "../pages/About";
 
 const RoutesMain = () => {
   return (
@@ -21,6 +22,7 @@ const RoutesMain = () => {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </AnimatePresence>
   );

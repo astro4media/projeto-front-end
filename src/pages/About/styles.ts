@@ -18,6 +18,7 @@ const Container = styled.main`
     text-align: center;
     overflow: hidden;
     border-bottom: 5px solid rgba(22, 0, 33, 0.88);
+    border-top: 5px solid rgba(22, 0, 33, 0.88);
 
     .videoContent {
       width: 100%;
@@ -41,7 +42,9 @@ const Container = styled.main`
         rgba(45, 5, 64, 0.352) 100%
       );
       .logoImage {
-        width: 350px;
+        width: 100%;
+        max-width: 350px;
+        margin-left: 15px;
       }
     }
   }
@@ -69,6 +72,8 @@ const Container = styled.main`
 
       .titleContent {
         color: white;
+        margin-left: 15px;
+        margin-right: 15px;
       }
 
       .textContent {
@@ -76,33 +81,43 @@ const Container = styled.main`
         color: white;
         font-weight: 500;
         font-size: 18px;
+        margin-left: 15px;
+        margin-right: 15px;
       }
     }
   }
 
   .finalContent {
     width: 100%;
-    height: 100%;
-    max-height: 500px;
+    /* max-height: 500px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: sticky;
+    gap: 30px;
     background-color: #1e1e1e;
     border-bottom: 5px solid rgba(22, 0, 33, 0.88);
 
     .titleContent {
+      text-align: center;
+      margin-top: 30px;
       color: white;
     }
 
     .teamContent {
+      background-color: #1e1e1e;
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
       flex-wrap: wrap;
       list-style: none;
+      /*       margin-left: 30px;
+      margin-right: 30px; */
       gap: 15px;
+      position: sticky;
+      margin-bottom: 50px;
     }
 
     .cardContent {
@@ -110,21 +125,27 @@ const Container = styled.main`
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 5px;
       background-color: white;
-      border-radius: 5px;
+      border-radius: 6px;
       padding-bottom: 10px;
     }
     .cardProfile {
       width: 250px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
 
       .imageProfile {
         width: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
       }
 
       .image {
         width: 100%;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+        border-bottom: 3px solid rgba(22, 0, 33, 0.88);
       }
     }
 
@@ -148,85 +169,6 @@ const Container = styled.main`
         border-style: none;
         padding: 5px;
       }
-    }
-
-    .cardContent2 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: white;
-      border-radius: 5px;
-      padding-bottom: 10px;
-    }
-    .cardProfile2 {
-      width: 250px;
-
-      .imageProfile2 {
-        width: 100%;
-      }
-
-      .image2 {
-        width: 100%;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-      }
-    }
-
-    .boxButtons2 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      gap: 5px;
-      width: 100%;
-
-      .cardButton2 {
-        background: #2b0748;
-        border-radius: 5px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        flex-wrap: nowrap;
-        color: white;
-        border-style: none;
-        padding: 5px;
-      }
-    }
-  }
-  .cardDev {
-    display: flex;
-    flex-direction: row;
-    /* justify-content: space-between; */
-    gap: 30px;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-bottom: 30px;
-    .cardProfile {
-      display: flex;
-      flex-direction: column;
-      backdrop-filter: blur(2px);
-      background: linear-gradient(
-        118.08deg,
-        rgba(22, 0, 33, 0.88) 1.35%,
-        rgba(45, 5, 64, 0.352) 100%
-      );
-      border-radius: 15px;
-      padding: 15px;
-    }
-    .cardImage {
-      width: 150px;
-
-      .image {
-        width: 100%;
-        border-radius: 100%;
-      }
-    }
-  }
-  .cardTechs {
-    .techs {
-      list-style: none;
     }
   }
 `;
