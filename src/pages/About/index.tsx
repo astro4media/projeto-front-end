@@ -8,6 +8,7 @@ import Eliseu from "../../assets/images/Eliseu.jpeg";
 import VideoBG from "../../assets/videos/VideoBG.mp4";
 import Container from "./styles";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const About = () => {
   const navigate = useNavigate();
@@ -15,13 +16,23 @@ const About = () => {
     <>
       <Container>
         <Header />
-        <section className="topContent">
+        <motion.section
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.0 }}
+          className="topContent"
+        >
           <video className="videoContent" src={VideoBG} autoPlay muted loop />
           <figure className="logoBox">
             <img src={Logo} className="logoImage" alt="LOGO" />
           </figure>
-        </section>
-        <section className="middleContent">
+        </motion.section>
+        <motion.section
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="middleContent"
+        >
           <div className="objective">
             <h2 className="titleContent">Nosso Objetivo</h2>
             <p className="textContent">
@@ -33,8 +44,13 @@ const About = () => {
               algo que nunca viu antes.
             </p>
           </div>
-        </section>
-        <section className="finalContent">
+        </motion.section>
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="finalContent"
+        >
           <h2 className="titleContent">Equipe de Desenvolvimento</h2>
           <ul className="teamContent">
             <li className="cardProfile">
@@ -208,7 +224,7 @@ const About = () => {
               </div>
             </li>
           </ul>
-        </section>
+        </motion.section>
       </Container>
     </>
   );
