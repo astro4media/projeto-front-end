@@ -4,6 +4,7 @@ import ContainerMovieScreen from "./styles";
 import Header from "../../components/Header";
 import { getMedia } from "../../services/tmdb";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 
 
@@ -11,10 +12,12 @@ import { useEffect, useState } from "react";
 const Movie = () => {
 
   const [movie, setMovie] = useState({} as IMovie)
+  const { idMovie } = useAuth()
+  
 
   useEffect(() => {
     async function test() {
-      const dataTestmidia = await getMedia("movie", 278);
+      const dataTestmidia = await getMedia("movie", idMovie.parseInt());
 
       setMovie(dataTestmidia)
       
@@ -22,9 +25,6 @@ const Movie = () => {
     test();
   }, []);
 
-
-  console.log(movie.overview)
- 
 
   return (
     <motion.div
