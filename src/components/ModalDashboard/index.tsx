@@ -22,7 +22,7 @@ const ModalDashboard = () => {
 
     useEffect(() => {
         async function teste() {
-            const data = await getMedia(mediaType as TMediaType, id as string)
+            const data:IGetMediaResponse = await getMedia(mediaType as TMediaType, id as string)
             setMovie(data)
         }
         teste()

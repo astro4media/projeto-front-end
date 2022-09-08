@@ -24,6 +24,7 @@ const RoutesMain = () => {
           </Route>
           <Route path="/profile" element={<Profile />} />
           <Route path="/movie" element={<Movie />} />
+        {/* </Route> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
