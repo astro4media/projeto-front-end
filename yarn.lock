@@ -1750,6 +1750,8 @@
     "@babel/runtime" "^7.18.9"
     "@mui/utils" "^5.10.3"
     prop-types "^15.8.1"
+<<<<<<< HEAD
+=======
 
 "@mui/styled-engine-sc@^5.10.3":
   version "5.10.3"
@@ -1758,6 +1760,7 @@
   dependencies:
     "@babel/runtime" "^7.18.9"
     prop-types "^15.8.1"
+>>>>>>> 58ed5a4d82c41989712c13236ddb35900c1dd0d2
 
 "@mui/styled-engine@^5.10.3":
   version "5.10.3"

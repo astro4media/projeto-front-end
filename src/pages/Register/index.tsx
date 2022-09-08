@@ -9,6 +9,8 @@ import { IUserRegister, useAuth } from "../../contexts/AuthContext";
 import ContainerRegister from "./styles";
 import { userRegister } from "../../services/Astro4MediaAPI";
 import { Navigate, useNavigate } from "react-router-dom";
+import rocket from "../../assets/images/rocketLogo.svg";
+import logoName from "../../assets/images/logoName.svg";
 
 const Register = () => {
   const { setLoading } = useAuth();
@@ -83,11 +85,26 @@ const Register = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
+        className="div-motion"
       >
-        <div className="">
-          <figure>
-            <img src="" alt="logo" />
-          </figure>
+        <div className="div-register">
+          <div className="div-logo">
+            <motion.img
+              src={rocket}
+              alt={"rocket logo"}
+              className="rocket-logo"
+              initial={{ x: -80, y: 80, opacity: 0 }}
+              animate={{ x: 18, y: 0, opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, delay: 1 }}
+            />
+            <motion.img
+              src={logoName}
+              alt={"logo Name"}
+              className="name-logo"
+            />
+          </div>
+
           <form onSubmit={handleSubmit(registerSubmit)}>
             <h1>Cadastrar</h1>
             <FormInput
