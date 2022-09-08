@@ -3,7 +3,7 @@ import Card from "../Card";
 import { SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { IMedia } from "../../services/tmdb";
-import { StyledSwiper } from "../Card/styles";
+import { StyledSwiper, ContainerSwiper } from "../Card/styles";
 import { FreeMode } from "swiper";
 
 interface IListProps {
@@ -14,8 +14,8 @@ interface IListProps {
 
 const List = ({ sessionTitle, medias, desc }: IListProps) => {
   return (
-    <>
-      <h2>{sessionTitle}</h2>
+    <ContainerSwiper>
+      <h2 className="tittle-session">{sessionTitle}</h2>
       <StyledSwiper
         spaceBetween={25}
         navigation={true}
@@ -43,12 +43,12 @@ const List = ({ sessionTitle, medias, desc }: IListProps) => {
         {medias.map((media) => {
           return (
             <SwiperSlide key={media.id}>
-              <Card media={media} />
+              <Card media={media} mediaType='movie' desc />
             </SwiperSlide>
           );
         })}
       </StyledSwiper>
-    </>
+    </ContainerSwiper>
   );
 };
 

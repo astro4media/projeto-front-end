@@ -23,7 +23,6 @@ const discoverMedia: IDiscoverMedia = async (mediaType, genreId, page) => {
     clearMedia(media, "genre_ids")
   );
 
-  console.log(responseMedia);
   return responseMedia;
 };
 

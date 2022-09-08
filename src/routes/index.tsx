@@ -7,15 +7,21 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Movie from "../pages/Movie";
 import Profile from "../pages/Profile";
+import ModalDashboard from "../components/ModalDashboard";
 
 const RoutesMain = () => {
   return (
-    <AnimatePresence>
+    <AnimatePresence
+    
+    >
       <Routes>
         <Route path="/" element={<Navigate to={"/dashboard"} />} />
-        <Route element={<ProtectedRoutes />}>
-          {/* PROTECTED ROUTES DISABLED FOR NOW */}
-          <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route element={<ProtectedRoutes />}>  PROTECTED ROUTES DISABLED FOR NOW*/}
+          <Route path="/dashboard" element={<Dashboard />} >
+            <Route path=":mediaType">
+              <Route path=":id" element={<ModalDashboard />} />
+            </Route>
+          </Route>
           <Route path="/profile" element={<Profile />} />
           <Route path="/movie" element={<Movie />} />
         </Route>

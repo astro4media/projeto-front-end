@@ -57,6 +57,86 @@ const ModalStyle = styled.div`
     margin-right: 15px;
     margin-top: 15px;
     margin-bottom: 15px;
+
+    .contentModalChildren {
+      margin-top: 2rem;
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      gap: 1.4rem;
+
+      color: #fff;
+      
+      .imgModal {
+        width: 100px;
+        border-radius: 6px;
+      }
+
+      .infoMovie {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .descricaoModal {
+          width: 28ch;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
+      }
+      
+    }
+    .buttonsModal {
+      width: 100%;
+      margin-top: 1.5rem;
+
+      display: flex;
+      justify-content: space-around;
+
+      button {
+        padding: 6px;
+        border-radius: 5px;
+        border: none;
+
+        background-color: #2b0748;
+        color: #fff;
+
+        transform: translate(0);
+        overflow: hidden;
+
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .assistir {
+          color: #fff;
+        }
+
+        ::before {
+                    content: '';
+                    position: absolute;
+                    background-color: #811e9b;
+                    width: 10px;
+                    top: 0;
+                    bottom: 0;
+                    left: -32px;
+                    transform: rotate(-16deg);
+                    filter: blur(5px);
+                }
+                :hover::before {
+                    left: calc(100% + 32px);
+                    transition: 0.75s;
+                }
+                :hover {
+                    background-color: #2b0748;
+                }
+      }
+    }
   }
 `;
 

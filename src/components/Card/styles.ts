@@ -8,6 +8,7 @@ export const ListContainer = styled.div`
     object-fit: contain;
     border-radius: 10px;
   }
+
 `;
 
 export const StyledSwiper = styled(Swiper)`
@@ -25,3 +26,9 @@ export const StyledSwiper = styled(Swiper)`
     color: white;
 }
 `;
+
+export const ContainerSwiper = styled.div`
+  .tittle-session {
+    margin-left: 3rem;
+  }
+`
